@@ -1,0 +1,10 @@
+jenkins:
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+       - id: test
+         password: 123456
+unclassified:
+  location:
+    url: http://127.0.0.1:8080/
