@@ -24,7 +24,7 @@ pipeline {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
-                sh 'git commit --amend -m "success"'
+                sh 'git commit --allow-empty --only --amend -m "success"'
                 sh 'git push --force origin master'
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-token')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
-                sh 'git commit --amend -m "fail"'
+                sh 'git commit --allow-empty --only --amend -m "fail"'
                 sh 'git push --force origin master'
             }
         }
