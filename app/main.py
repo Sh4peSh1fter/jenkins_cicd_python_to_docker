@@ -24,16 +24,22 @@ def solution(s, c):
         else:
             unique_name_dict[f"{first_name} {last_name}"] = ''
 
-        email = f"<{first_name}.{last_name}{unique_name_dict[f'{first_name} {last_name}']}@{c}.{EMAIL_DOMAIN}>".lower()
+        email = f"<{first_name}.{last_name}{unique_name_dict[f'{first_name} {last_name}']}" \
+                f"@{c}.{EMAIL_DOMAIN}>".lower()
         employees_email_list.append(full_name + " " + email)
 
     return ", ".join(employees_email_list)
 
 
 def main():
+    """
+    main
+
+    :return:
+    """
     print(solution(
-        "John Doe, Peter Benjamin Parker, Mary Jane Watson-Parker, John Elvis Doe, John Evan Doe, Jane Doe, "
-        "Peter Brian Parker",
+        "John Doe, Peter Benjamin Parker, Mary Jane Watson-Parker, John Elvis Doe, "
+        "John Evan Doe, Jane Doe, Peter Brian Parker",
         "Example"))
 
     print(solution(input("employees names: \n> "), "Example"))
