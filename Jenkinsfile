@@ -21,10 +21,10 @@ pipeline {
     }
     post {
         success {
-            sh 'git commit --amend "success"'
+            echo "yea"
         }
         failure {
-            sh 'git commit --amend "failure"'
+            echo "oof"
         }
     }
 }
