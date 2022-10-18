@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'cd app'
                 sh 'docker build --progress=plain -f app/Dockerfile -t app .'
             }
         }
