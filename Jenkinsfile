@@ -34,9 +34,8 @@ pipeline {
                 sh 'git config --global user.name "Your Name"'
                 sh 'mkdir /test'
                 sh 'cd /test'
-                sh 'ls'
-                sh 'git clone https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker.git'
-                sh 'git add jenkins_cicd_python_to_docker'
+                sh 'git clone https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker.git /test'
+                sh 'git add /test/jenkins_cicd_python_to_docker'
                 sh 'git commit --amend -m "fail"'
                 sh 'git push --force origin master'
             }
