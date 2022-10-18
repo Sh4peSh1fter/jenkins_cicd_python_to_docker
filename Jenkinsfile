@@ -19,4 +19,12 @@ pipeline {
             }
         }
     }
+    post {
+        success {
+            echo "yay"
+        }
+        failure {
+            echo "oof"
+        }
+    }
 }
