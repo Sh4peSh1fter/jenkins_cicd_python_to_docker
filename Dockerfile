@@ -17,3 +17,8 @@ USER root
 
 RUN apt-get update && \
     apt-get -y install python3
+
+RUN curl https://get.docker.com/ > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
+RUN usermod -aG docker jenkins
+# RUN chmod 666 /var/run/docker.sock
+RUN service docker start
