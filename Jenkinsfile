@@ -35,7 +35,6 @@ pipeline {
                 sh 'cd jenkins_cicd_python_to_docker'
                 sh 'ls'
                 sh 'git commit --amend -m "fail"'
-                sh 'git push --force origin master'
             }
         }
     }
