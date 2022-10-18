@@ -8,11 +8,11 @@ pipeline {
             }
         }
         stage('run') {
-            steps {
+            steps { 
                 sh 'docker run -i app'
             }
         }
-        stage('Test') { 
+        stage('Test') {
             steps {
                 sh 'python3 -m pytest'
             }
