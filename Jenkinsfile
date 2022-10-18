@@ -12,5 +12,10 @@ pipeline {
                 sh 'docker run -i app'
             }
         }
+        stage('Test') {
+            steps {
+                sh 'python3 -m pytest'
+            }
+        }
     }
 }
