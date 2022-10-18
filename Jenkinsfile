@@ -10,7 +10,7 @@ pipeline {
         }
         stage('run') {
             steps {
-                sh 'docker run app'
+                sh 'docker run -it app'
             }
         }
     }
