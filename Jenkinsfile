@@ -21,13 +21,17 @@ pipeline {
     }
     post {
         success {
-            withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke', gitToolName: 'git-tool')]) {
+            withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke')]) {
+                sh 'git config --global user.email "you@example.com"'
+                sh 'git config --global user.name "Your Name"'
                 sh 'git commit --amend -m "success"'
                 sh 'git push --force origin master'
             }
         }
         failure {
-            withCredentials([gitUsernamePassword(credentialsId: 'working-github-token', gitToolName: 'git-tool')]) {
+            withCredentials([gitUsernamePassword(credentialsId: 'working-github-token')]) {
+                sh 'git config --global user.email "you@example.com"'
+                sh 'git config --global user.name "Your Name"'
                 sh 'git commit --amend -m "fail"'
                 sh 'git push --force origin master'
             }
