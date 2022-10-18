@@ -20,7 +20,7 @@ RUN apt-get update && \
     apt-get -y install python3 && \
     apt-get -y install python3-pip
 
-RUN pip install pytest
+RUN pip install pylint pytest
 
 RUN curl https://get.docker.com/ > dockerinstall && chmod 777 dockerinstall && ./dockerinstall
 RUN usermod -aG docker jenkins

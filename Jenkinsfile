@@ -9,6 +9,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+                sh 'pylint app/'
                 sh 'pytest app/test_main.py'
             }
         }
