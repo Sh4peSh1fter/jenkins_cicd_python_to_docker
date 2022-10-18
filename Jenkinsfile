@@ -21,12 +21,16 @@ pipeline {
     }
     post {
         success {
-            sh 'git commit --amend -m "success"'
-            sh 'git push --force origin master'
+            withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke', gitToolName: 'git-tool')]) {
+                sh 'git commit --amend -m "success"'
+                sh 'git push --force origin master'
+            }
         }
         failure {
-            sh 'git commit --amend -m "fail"'
-            sh 'git push --force origin master'
+            withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke', gitToolName: 'git-tool')]) {
+                sh 'git commit --amend -m "fail"'
+                sh 'git push --force origin master'
+            }
         }
     }
 }
