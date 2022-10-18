@@ -8,7 +8,7 @@ pipeline {
             }
         }
         stage('run') {
-            steps {  
+            steps {
                 sh 'docker run -i app'
             }
         }
