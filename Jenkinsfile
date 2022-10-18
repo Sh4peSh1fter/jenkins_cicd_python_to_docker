@@ -10,6 +10,7 @@ pipeline {
         }
         stage('run') {
             steps {
+                sh 'ls'
                 sh 'docker run app'
             }
         }
