@@ -32,9 +32,8 @@ pipeline {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-token')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
-                sh 'cd /test'
-                sh 'git clone https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker.git /test'
-                sh 'git add /test/jenkins_cicd_python_to_docker'
+                sh 'git clone https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker.git /var/jenkins_home/workspace/nvidia/test'
+                sh 'git add /var/jenkins_home/workspace/nvidia/test/jenkins_cicd_python_to_docker'
                 sh 'git commit --amend -m "fail"'
                 sh 'git push --force origin master'
             }
