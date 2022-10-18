@@ -27,7 +27,7 @@ pipeline {
             }
         }
         failure {
-            withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke', gitToolName: 'git-tool')]) {
+            withCredentials([gitUsernamePassword(credentialsId: 'working-github-token', gitToolName: 'git-tool')]) {
                 sh 'git commit --amend -m "fail"'
                 sh 'git push --force origin master'
             }
