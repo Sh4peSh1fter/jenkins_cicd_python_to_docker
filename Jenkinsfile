@@ -33,7 +33,7 @@ pipeline {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
                 sh 'git commit --amend -m "fail"'
-                sh 'git push --force -u origin master'
+                sh 'git push --force origin HEAD:master'
             }
         }
     }
