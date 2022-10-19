@@ -1,21 +1,24 @@
 pipeline {
     agent any
 
-    script {
-        def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
-        if( msg.contains("pipeline") ) {
-            return
-        }
-    }
-
     stages {
+        stage('stop recursion') {
+            steps {
+                script {
+                    def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
+                    if( msg.contains("pipeline") ) {
+                        return
+                    }
+                }
+            }
+        }
         stage('build') {
             steps {
                 sh 'docker build --progress=plain -f app/Dockerfile -t app .'
                 sh 'git log -1 --pretty=%B'
             }
         }
-        stage('Test') {
+        stage('test') {
             steps {
                 sh 'pylint app/'
                 sh 'pytest app/test_main.py'
