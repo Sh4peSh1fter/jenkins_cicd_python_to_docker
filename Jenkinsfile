@@ -7,8 +7,7 @@ pipeline {
                 script {
                     def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
                     if( msg.contains("pipeline") ) {
-                        sh 'echo exiting from recursion'
-                        skipRemainingStages = true
+                        error 'echo exiting from recursion'
                     }
                 }
             }
