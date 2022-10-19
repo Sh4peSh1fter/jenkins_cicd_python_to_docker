@@ -7,7 +7,7 @@ pipeline {
                 script {
                     def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
                     if( msg.contains("pipeline") ) {
-                        error("recursion")
+                        sh "exit 1"
                     }
                 }
             }
@@ -27,7 +27,7 @@ pipeline {
         stage('run') {
             steps {
                 sh 'docker run -i app'
-            } 
+            }
         }
     }
     post {
