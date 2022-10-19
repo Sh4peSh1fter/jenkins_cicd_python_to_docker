@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    df msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
+    def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
     if( msg.contains("pipeline") ) {
         return
     }
