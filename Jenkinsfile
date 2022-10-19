@@ -5,6 +5,7 @@ pipeline {
         stage('build') {
             steps {
                 sh 'docker build --progress=plain -f app/Dockerfile -t app .'
+                sh 'git log -1 --pretty=%B'
             }
         }
         stage('Test') {

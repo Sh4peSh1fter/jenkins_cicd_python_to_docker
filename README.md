@@ -45,10 +45,8 @@ docker compose up
 3. After the docker-compose finished successfuly, visit http://127.0.0.1:8080/, and finish the jenkins setup.
 4. Create new pipeline (the name doesn't metter)
 ![step 4 - create new pipeline](images/create_new_pipeline.PNG)
-5. In the "General" section, check the "GitHub project", and enter your project's url ("https://github.com/Sh4peSh1fter/from_git_to_docker/" for this example)
+5. In the "General" section, check the "GitHub project", and enter your project's url ("https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker/" for this example)
 ![step 5 - enter github project url](images/enter_project_url.PNG)
-6. In the "Build Triggers" check the "GitHub Pull Request Builder", there check the "use github hooks for build triggers". Also check the "GitHub hook trigger for GITScm polling" option.
-![step 6 - configure build triggers](images/configure_build_triggers.PNG)
 7. In the "Pipeline" section, pick the "pipeline script from SCM". Under that pick "Git" as your SCM and enter the git repo you want to be connected with in the "repositoriy URL".
 If the repo is public you can leave the "credentials" as none. Dont forget to save.
 ![step 7 - configure SCM](images/configure_SCM.PNG)
