@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    df msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
+    if( msg.contains("pipeline") ) {
+        return
+    }
+
     stages {
         stage('build') {
             steps {
@@ -21,10 +26,6 @@ pipeline {
         }
     }
     post {
-        df msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
-        when {
-            expression { msg.contains("pipeline") } 
-        }
         success {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke')]) {
                 sh 'git config --global user.email "you@example.com"'
