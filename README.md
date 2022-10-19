@@ -1,14 +1,21 @@
-# from_git_to_docker
-Build and deploy jenkins container (that will serve also as the agent) that rusn the python script located in the master branch, on every pull request.
+# jenkins_cicd_python_to_docker
+Build and deploy jenkins container (that will serve also as the agent) that runs the python script located in the master branch, on every push request.
 
 To start everything, just run "docker compose up" in the repository.
 For configuring the jenkins and github, and creating the job itself, follow the "Usage" guide.
 
 ## Structure
 ```
-from_git_to_docker/
+jenkins_cicd_python_to_docker/
 |
-├── images                  # images for the readme file
+├── app/                    # app folder
+|   ├── Dockerfile          # python dockerfile
+|   ├── __init__.py         # 
+|   ├── main.py             # the solution
+|   └── test_main.py        # solution unit test
+|
+├── images/                 # images for the readme file
+├── .gitignore              # 
 ├── Dockerfile              # jenkins dockerfile
 ├── Jenkinsfile             # jenkinsfile for the pipeline
 ├── README.md               # readme file
@@ -16,14 +23,8 @@ from_git_to_docker/
 ├── docker-compose.yml      # docker-compose to build the images and run the containers
 ├── jenkins-cli.jar         # jenkins-cli
 ├── jenkins_plugins.txt     # the jenkins plugins that will be installed
-├── main.py                 # python script that will run in the job for each pull request.
 └── test.xml                # xml of the job
 ```
-
-- Dockerfile - the dockerfile of the jenkins container that is deployed. also installs python in the container to run localy the python job.
-- Jenkinsfile - the jenkinsfile that contains the stages the jenkins agent will do whenever the pipeline is activeted.
-- docker-compose.yml - the docker-compose file that deploys the jenkins container from its dockerfile.
-- main.py - the python script that runs by the pipeline (according to the jenkinsfile).
 
 ## Getting Started
 ### prerequisites
@@ -34,11 +35,11 @@ The dockerfile pulls image from dockerhub so also check you are connected to the
 ### Usage
 1. Clone the repo
 ```
-git clone https://github.com/Sh4peSh1fter/from_git_to_docker.git
+git clone https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker.git
 ```
 2. Run the docker-compose to deploy the containers. Make sure you are in the same folder with the docker-compose.yml.
 ```
-cd from_git_to_docker
+cd jenkins_cicd_python_to_docker
 docker compose up
 ```
 3. After the docker-compose finished successfuly, visit http://127.0.0.1:8080/, and finish the jenkins setup.
