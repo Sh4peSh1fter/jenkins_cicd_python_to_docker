@@ -7,7 +7,8 @@ pipeline {
                 script {
                     def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
                     if( msg.contains("pipeline") ) {
-                        sh "exit 1"
+                        currentBuild.result = 'ABORTED'
+                        error("recursion")
                     }
                 }
             }
