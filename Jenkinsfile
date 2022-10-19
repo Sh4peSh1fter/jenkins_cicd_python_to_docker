@@ -24,15 +24,15 @@ pipeline {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
-                sh 'git commit --allow-empty --only --amend -m "success"'
-                sh 'git push --force origin master'
+                sh 'git commit --amend -m "cicd pipeline succeeded"'
+                sh 'git push --force origin HEAD:master'
             }
         }
         failure {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-token')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
-                sh 'git commit --amend -m "fail"'
+                sh 'git commit --amend -m "cicd pipeline failed"'
                 sh 'git push --force origin HEAD:master'
             }
         }
