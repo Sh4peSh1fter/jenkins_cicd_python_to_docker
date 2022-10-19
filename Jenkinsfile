@@ -21,7 +21,10 @@ pipeline {
         }
     }
     post {
-        when { sh(script:'git log -1 --pretty=%B', returnStdout:true).trim() == "" }
+        df msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
+        when {
+            expression { msg.contains("pipeline") } 
+        }
         success {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-toke')]) {
                 sh 'git config --global user.email "you@example.com"'
