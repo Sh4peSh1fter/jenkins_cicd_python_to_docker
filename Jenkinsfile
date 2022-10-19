@@ -32,6 +32,7 @@ pipeline {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-token')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
+                sh 'ls'
                 sh 'rm -rf /var/jenkins_home/workspace/nvidia/test'
                 sh 'git clone https://github.com/Sh4peSh1fter/jenkins_cicd_python_to_docker.git /var/jenkins_home/workspace/nvidia/test'
                 sh 'git add /var/jenkins_home/workspace/nvidia/test/'
