@@ -1,9 +1,11 @@
 pipeline {
     agent any
 
-    def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
-    if( msg.contains("pipeline") ) {
-        return
+    script {
+        def msg = sh(script:'git log -1 --pretty=%B', returnStdout:true).trim()
+        if( msg.contains("pipeline") ) {
+            return
+        }
     }
 
     stages {
