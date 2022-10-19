@@ -32,10 +32,8 @@ pipeline {
             withCredentials([gitUsernamePassword(credentialsId: 'working-github-token')]) {
                 sh 'git config --global user.email "you@example.com"'
                 sh 'git config --global user.name "Your Name"'
-                sh 'pwd'
-                sh 'rm -rf /var/jenkins_home/workspace/nvidia/test'
-                sh 'rm -rf /var/jenkins_home/workspace/nvidia/jenkins_cicd_python_to_docker'
-                sh 'git add .'
+                sh 'touch yo'
+                sh 'git add yo'
                 sh 'git commit --amend -m "fail"'
                 sh 'git push --force origin master'
             }
